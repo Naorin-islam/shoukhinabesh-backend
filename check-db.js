@@ -12,11 +12,11 @@ async function verifyAndCreateDb() {
   }
 
   const envContent = fs.readFileSync(envPath, 'utf8');
-  const passwordMatch = envContent.match(/DB_PASSWORD=(.*)/);
+  const passwordMatch = envContent.match(/DATABASE_PASSWORD=(.*)/);
   const password = passwordMatch ? passwordMatch[1].trim().replace(/^['"]|['"]$/g, '') : '';
-  const userMatch = envContent.match(/DB_USERNAME=(.*)/);
+  const userMatch = envContent.match(/DATABASE_USER=(.*)/);
   const username = userMatch ? userMatch[1].trim().replace(/^['"]|['"]$/g, '') : 'postgres';
-  const portMatch = envContent.match(/DB_PORT=(.*)/);
+  const portMatch = envContent.match(/DATABASE_PORT=(.*)/);
   const port = portMatch ? Number(portMatch[1].trim()) : 5432;
 
   console.log(`🔌 Connecting to PostgreSQL (Host: localhost:${port}, User: ${username})...`);
